@@ -6,5 +6,5 @@ run:
 
 send :
 	git add $(SRC) $(DATA) Makefile
-	git commit -m "add add different integration methods"
+	git commit -m "the simulation data can be saved and read in files"
 	git push

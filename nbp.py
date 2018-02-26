@@ -7,7 +7,8 @@ Created on Sun Feb 25 13:22:13 2018
 """
 from body import body
 import numpy as np
-from integration_methods import euler_explicit, stormer_verlet
+import integration_methods as IM
+import save_data as SD
 
 class nbp :
     def __init__(self,L):
@@ -61,25 +62,41 @@ class nbp :
                     
                 #compute the acceleration
                 dX[i,3:6] = dX[i,3:6] - self.body[j].GM * r/(nr**3)            
-        return dX 
+        return dX
     
-    def orbit_computation(self,method,c1,c2,c3):
+    def save_state(self,X,header=False):
+        #save the sate with the titles
+        for j in range(len(self.body)):
+            if header:
+                open("./data/"+self.body[j].name + ".txt", 'w').close()
+                SD.AppendString("./data/"+self.body[j].name + ".txt","x[km] y[km] z[km] vx[km] vy[km] vz[km]")
+            else : 
+                SD.AppendArray("./data/"+self.body[j].name + ".txt",X[j].reshape(1,6))
+        return
+    
+    def orbit_computation(self,method):
         #method 1 : euler_explicit
         #method 2 : stormer_verlet
-        L0,L1,L2=[],[],[]
+        
+        #add the header to the files
+        self.save_state([],True)
+        
         for i in range(self.n_iter):
-            x = self.get_state()
+            X = self.get_state()
             if method == 1 :
-                x = euler_explicit(x,self.t_step,self.state_deriv)
+                X = IM.euler_explicit(X,self.t_step,self.state_deriv)
             elif method ==2 :
-                x = stormer_verlet(x,self.t_step,self.state_deriv)
+                X = IM.stormer_verlet(X,self.t_step,self.state_deriv)
             else:
                 print('CHOOSE A CORRECT INTEGRATION METHOD')
                 print('1 : Euler_explicit ')
                 print('2 : Stormer_Verlet ')
                 break
-            self.set_state(x) 
-            L0.append(list(x[c1,0:3]))
-            L1.append(list(x[c2,0:3]))
-            L2.append(list(x[c3,0:3]))
-        return [np.array(L0), np.array(L1), np.array(L2)]
+            self.set_state(X)
+            
+            #save the states in txt files
+            self.save_state(X,False)
+        
+    def get_results(self,name):
+        data = SD.ReadFile("./data/"+name+ ".txt")
+        return data
