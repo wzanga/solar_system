@@ -164,8 +164,7 @@ class body :
             print("CHOOSE A PRE-EXISTING BODY")
         return
 
-            #####
-            #####
+
     def initialize(self,position,velocity):
         [self.px, self.py, self.pz ] = position  #km
         [self.vx, self.vy, self.vz ] = velocity #km/s

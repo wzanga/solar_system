@@ -1,7 +1,10 @@
+DATA = ./data/*.txt
+SRC = *.py
+
 run:
 	python main.py
 
 send :
-	git add *.py Makefile
-	git commit -m "first version"
+	git add $(SRC) $(DATA) Makefile
+	git commit -m "add add different integration methods"
 	git push
