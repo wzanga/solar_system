@@ -79,7 +79,7 @@ class nbp :
         #method 2 : stormer_verlet
         
         #add the header to the files
-        self.save_state([],True)
+        self.save_state(self.get_state(),True)
         
         for i in range(self.n_iter):
             X = self.get_state()
@@ -100,3 +100,9 @@ class nbp :
     def get_results(self,name):
         data = SD.ReadFile("./data/"+name+ ".txt")
         return data
+    
+    def get_results_all(self):
+        M=[]
+        for i in range(len(self.body)):
+            M.append( self.get_results(self.body[i].name ) )
+        return M

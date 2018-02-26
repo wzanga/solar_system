@@ -6,5 +6,5 @@ run:
 
 send :
 	git add $(SRC) $(DATA) Makefile
-	git commit -m "the simulation data can be saved and read in files"
+	git commit -m "method to retrieve all the states of each body done"
 	git push
