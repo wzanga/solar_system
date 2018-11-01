@@ -8,7 +8,7 @@ Basic Usage
 ===========
 The principal class used for the simulation is 'nbp' which stands for "N-body problem" 
 
-1.It is initialized with the name of the bodies we would like to simulate
+1. It is initialized with the name of the bodies we would like to simulate
 For exemple nbp = nbp(['SUN','MERCURY','VENUS','EARTH','MARS']) initialize the n-body problem with the sun, Mercury, Venus, the Earth and Mars
 
 2. Each body must be given an initial state
