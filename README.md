@@ -1,12 +1,25 @@
-# solar_system
-A simple solar system simulation with python
+# Solar System Demo
 
-nbp stands for "N-body problem". This is the main structure of the simulation.
+Overview
+============
+This project is a special case of the gravitational nbody problem applied to the solar system
 
-1.It is initialized by giving it the names of the body involved in the simulation :
-['SUN','MERCURY','VENUS','EARTH','MARS',............'PLUTO']
+Dependencies
+============
+
+TensorFlow (https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#pip-installation)
+
+Use [pip](https://pypi.python.org/pypi/pip) to install any missing dependencies
+
+Basic Usage
+===========
+The principal class used for the simulation is 'nbp' which stands for "N-body problem" 
+
+1.It is initialized with the name of the bodies we would like to simulate:
+For exemple ['SUN','MERCURY','VENUS','EARTH','MARS',............,'PLUTO']
 
 2.The initial conditions for each body must be given
 By default, you should use the orbital velocities of the body w.r.t the Sun
 These orbital velocities are attributes of the << body class >> (see body.py)
 
+That's it!
