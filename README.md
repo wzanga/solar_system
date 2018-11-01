@@ -4,13 +4,6 @@ Overview
 ============
 This project is a special case of the gravitational nbody problem applied to the solar system
 
-Dependencies
-============
-
-TensorFlow (https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#pip-installation)
-
-Use [pip](https://pypi.python.org/pypi/pip) to install any missing dependencies
-
 Basic Usage
 ===========
 The principal class used for the simulation is 'nbp' which stands for "N-body problem" 
